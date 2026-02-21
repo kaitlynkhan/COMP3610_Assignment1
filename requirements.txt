@@ -1,8 +1,8 @@
-pandas
+streamlit>=1.32
+altair>=5
 polars
-duckdb
-plotly
-streamlit
-altair
 pyarrow
+pandas
+plotly
+duckdb
 requests
