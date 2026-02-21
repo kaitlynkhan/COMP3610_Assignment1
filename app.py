@@ -142,7 +142,7 @@ LIMIT 10;
 top_zones = con.execute(q1).df()
 
 fig1 = px.bar(top_zones, x="pickup_zone", y="trip_count")
-st.plotly_chart(fig1, use_container_width=True)
+st.plotly_chart(fig1, width="stretch")
 st.write(
     "Midtown and airport zones like JFK consistently appear among the busiest pickup areas. "
     "This suggests that business districts and transportation hubs drive a large share of total trip volume in NYC."
@@ -159,7 +159,7 @@ ORDER BY pickup_hour;
 fare_by_hour = con.execute(q2).df()
 
 fig2 = px.line(fare_by_hour, x="pickup_hour", y="avg_fare", markers=True)
-st.plotly_chart(fig2, use_container_width=True)
+st.plotly_chart(fig2, width="stretch")
 st.write(
     "Average fares peak during early morning and late afternoon hours. "
     "This likely reflects commuter demand and airport traffic, where longer trips increase the average fare."
@@ -171,7 +171,7 @@ st.subheader("3) Trip Distance Distribution")
 #limited the extreme outliers for vizualization 
 distance_filtered = df[df["trip_distance"] <= 30]
 fig3 = px.histogram(distance_filtered, x="trip_distance", nbins=60)
-st.plotly_chart(fig3, use_container_width=True)
+st.plotly_chart(fig3, width="stretch")
 
 st.write(
     "The majority of trips are short-distance rides under a few miles. "
@@ -184,7 +184,7 @@ pay_counts = df["payment_type"].value_counts().reset_index()
 pay_counts.columns = ["payment_type", "trip_count"]
 
 fig4 = px.pie(pay_counts, names="payment_type", values="trip_count")
-st.plotly_chart(fig4, use_container_width=True)
+st.plotly_chart(fig4, width="stretch")
 st.write(
     "Credit card payments dominate taxi transactions, accounting for the vast majority of trips. "
     "Cash usage is significantly lower, indicating strong adoption of digital payment methods in NYC."
@@ -204,11 +204,8 @@ heat = con.execute(q5).df()
 pivot = heat.pivot(index="pickup_day_of_week", columns="pickup_hour", values="trip_count").fillna(0)
 
 fig5 = px.imshow(pivot, aspect="auto")
-st.plotly_chart(fig5, use_container_width=True)
+st.plotly_chart(fig5, width="stretch")
 st.write(
     "Trip demand increases during weekday daytime hours and peaks in late afternoon periods. "
     "Weekend patterns show higher late-night activity, reflecting leisure travel behavior."
 )
-
-
-
