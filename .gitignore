@@ -1,0 +1,13 @@
+# Ignore raw and processed data files
+data/
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore virtual environments
+.venv/
+env/
+
+# Ignore system files
+.DS_Store

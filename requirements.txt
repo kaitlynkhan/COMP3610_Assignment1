@@ -1,0 +1,8 @@
+pandas
+polars
+duckdb
+plotly
+streamlit
+altair
+pyarrow
+requests
